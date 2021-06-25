@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+	  <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Password Strength Checker</title>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+ <script type="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+</head>
+<style type="text/css">
+  a:link {
+  color: green;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:visited {
+  color: blue;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:hover {
+  color: red;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+a:active {
+  color: yellow;
+  background-color: transparent;
+  text-decoration: underline;
+}
+	 button{
+                font-family:inherit;
+                font-weight:inherit;
+                user-select: none;
+                border-color: #2196F3;
+                margin-top: 1.2rem;
+                padding: 1rem 1.2rem;
+                min-width:24rem;
+
+                border-radius:0.2rem;
+                background: #33F3FF;
+                color: #040404;
+
+                transition: opacity 0.2s;
+            }
+            
+           
+            #clock ,#clock2,#clock3{
+            font-family: 'Source Sans Pro', sans-serif;
+            color: #66ff99;
+             font-size: 20px;
+ 			}
+            button:hover{
+                opacity 0.6;
+                cursor:pointer;
+                background-color: #33a89e;
+            }
+            
+            body{
+                background-color:black;
+            }
+            
+            #frmCheckPassword {
+                border-top: #F0F0F0 2px solid;
+              background-color: silver;
+                padding: 10px;
+            }
+            #geeks{
+              resize:none;
+            }
+
+            .demoInputBox {
+                padding: 7px;
+                border: #F0F0F0 1px solid;
+                border-radius: 5px;
+                font-family: "Source Sans Pro", sans-serif;
+                font-weight: 600;
+
+            }
+       
+            #password-strength-status {
+                padding: 5px 10px;
+                color: #FFFFFF;
+                border-radius: 4px;
+                margin-top: 5px;
+            }
+
+            .medium-password {
+                background-color: #b7d60a;
+                border: #BBB418 1px solid;
+            }
+
+            .weak-password {
+                background-color: #ce1d14;
+                border: #AA4502 1px solid;
+            }
+
+            .strong-password {
+                background-color: #12CC1A;
+                border: #0FA015 1px solid;
+            }
+            #uppercase,#lowercase,#symbol,#number{
+              cursor:pointer;
+            }
+
+</style>
+<body style="overflow:hidden">
+	
+        
+ <div id="clock"></div>
+  <div id="clock2"></div>
+  <div id="clock3"></div>
+
+      <center style="padding-top: 40px">
+    <div name="frmCheckPassword" id="frmCheckPassword">
+         <h4>Click on the button to generate random password.</h4> 
+       <input  type="number" placeholder="Length of password" class="demoInputBox" id="length" min='0' max='15' value="15"><br>
+      <br>
+       <textarea type="text" class="demoInputBox" placeholder="Password" id="geeks" rows="1" column ="20" readonly></textarea> 
+             
+              <i onclick="reset2()" class="fa fa-times" id="display" style="font-size:36px"></i>
+              <i class="fas fa-copy" id="copy" style="font-size:36px" ></i><br>
+              <table>
+                <tr>
+              	<input type="checkbox" name="uppercase" id="uppercase" checked="checked">
+              	<label for="uppercase"> <strong>Uppercase</strong></label>
+                <br>
+              </tr>
+              <tr>
+              	              	<input type="checkbox" name="lowercase" id="lowercase" checked="checked">
+              	<label for="lowercase"> <strong>Lowercase</strong></label><br>
+              </tr>
+              <tr>
+              	              	<input type="checkbox" name="number" id="number">
+              	<label for="number"> <strong>Number</strong></label><br>
+              </tr>
+              <tr>
+              	              	<input type="checkbox" name="symbol" id="symbol" >
+              	<label for="symbol"> <strong>Special Character</strong></label><br>
+              </tr>
+             
+              </table>
+
+
+
+
+              
+    <button onclick="gfg_Run()"> 
+        <strong>Generate Password</strong>    <i class="fas fa-key" id="display"></i>
+    </button> 
+    
+        <br><br>
+        <label><strong>Password(Press Enter):</strong></label>
+        
+  <input type="password" name="password" id="password" class="demoInputBox"  placeholder="Type password here">
+       
+         <i onclick="show('password')" class="fas fa-eye-slash" id="display" ></i>
+         <i onclick="reset()" class="fa fa-times" id="display"  ></i>
+        
+        <div id="password-strength-status"></div>
+        <button  onclick="checkPasswordStrength()" ><strong>Check</strong><i class="fa fa-check" aria-hidden="true" id="display"></i></button><br><br>
+        </div>
+    
+</center>
+
+</div>
+<div id="frmCheckPassword">
+    <strong>Recently Generated Password:</strong> <span id="repeat"></span>
+    <div style="text-align:right;">
+    <a  href="#" onclick="generatePDF();" border="0">Click to Download</a></div>
+</div>
+
+    
+        <script tpye="text/javascript" src="script.js"  ></script>
+</body>
+</html>
